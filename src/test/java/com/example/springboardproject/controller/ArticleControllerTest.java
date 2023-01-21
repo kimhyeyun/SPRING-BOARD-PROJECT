@@ -62,7 +62,7 @@ class ArticleControllerTest {
         mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andExpect(view().name("articles/seach"));
+                .andExpect(view().name("articles/search"));
     }
 
     @Disabled("구현 중")
