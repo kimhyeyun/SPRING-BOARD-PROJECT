@@ -38,7 +38,7 @@ class ArticleCommentServiceTest {
         Long articleId = 1L;
         ArticleComment expected = createArticleComment("content");
 
-        given(articleCommentRepository.findArticle_Id(articleId)).willReturn(List.of(expected));
+        given(articleCommentRepository.findByArticle_Id(articleId)).willReturn(List.of(expected));
 
         // When
         List<ArticleCommentDto> actual = sut.searchArticleComments(articleId);
@@ -48,7 +48,7 @@ class ArticleCommentServiceTest {
                 .hasSize(1)
                 .first().hasFieldOrPropertyWithValue("content", expected.getContent());
 
-        then(articleCommentRepository).should().findArticle_Id(articleId);
+        then(articleCommentRepository).should().findByArticle_Id(articleId);
     }
 
 
