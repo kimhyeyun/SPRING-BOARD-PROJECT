@@ -85,7 +85,7 @@ public class ArticleController {
         // TODO: 인증 정보를 넣어줘야 한다.
 
         articleService.saveArticle(articleRequest.toDto(UserAccountDto.of(
-                "yun", "asdf1234", "yun@mail.com", "Yun", "memo", null, null, null, null
+                "yun", "asdf1234", "yun@mail.com", "Yun", "memo"
         )));
 
         return "redirect:/articles";
@@ -106,7 +106,7 @@ public class ArticleController {
         // TODO: 인증 정보를 넣어줘야 한다.
 
         articleService.updateArticle(articleId, articleRequest.toDto(UserAccountDto.of(
-                "yun", "asdf1234", "yun@mail.com", "Yun", "memo", null, null, null, null
+                "yun", "asdf1234", "yun@mail.com", "Yun", "memo"
         )));
 
         return "redirect:/articles/" + articleId;
