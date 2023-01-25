@@ -104,8 +104,8 @@ public class ArticleController {
     @PostMapping("/{articleId}/form")
     public String updateArticle(
             @PathVariable Long articleId,
-            ArticleRequest articleRequest,
-            @AuthenticationPrincipal BoardPrincipal boardPrincipal
+            @AuthenticationPrincipal BoardPrincipal boardPrincipal,
+            ArticleRequest articleRequest
     ) {
         articleService.updateArticle(articleId, articleRequest.toDto(boardPrincipal.toDto()));
 
