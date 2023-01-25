@@ -43,7 +43,7 @@ spring:
 spring:
   config:
     activate:
-      on-profile: prod
+      on-profile: cloudtype
   datasource:
     url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/board?characterEncoding=UTF-8&serverTimezone=UTC
     username: ${DB_USERNAME}
