@@ -36,3 +36,16 @@ spring:
       detection-strategy: annotated
   thymeleaf3:
     decoupled-logic: true
+---
+spring:
+  config:
+    activate:
+      on-profile: heroku
+  datasource:
+    url: ${CREARDB_DATABASE_URL}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  sql:
+    init:
+      mode: never
