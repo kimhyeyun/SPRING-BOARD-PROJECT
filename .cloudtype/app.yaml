@@ -1,0 +1,17 @@
+name: spring-board-project
+app: java@17
+options:
+  ports: 8080/http
+  env:
+    - name: DB_HOST
+      value: mariadb
+    - name: DB_PORT
+      value: "3306"
+    - name: DB_USERNAME
+      value: yun
+    - name: DB_PASSWORD
+      value: thisisTESTpw!@#$
+context:
+  git:
+    url: https://github.com/kimhyeyun/SPRING-BOARD-PROJECT.git
+    branch: master
