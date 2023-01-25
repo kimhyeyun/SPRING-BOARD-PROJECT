@@ -39,21 +39,23 @@ spring:
       detection-strategy: annotated
   thymeleaf3:
     decoupled-logic: true
+
 ---
+
 spring:
   config:
     activate:
       on-profile: cloudtype
   datasource:
-    url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/board?characterEncoding=UTF-8&serverTimezone=UTC
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:mariadb://localhost:3306/board?characterEncoding=UTF-8&serverTimezone=UTC
+    username: yun
+    password: thisisTESTpw!@#$
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     open-in-view: false
     show-sql: true
     defer-datasource-initialization: off
-    hibernate.ddl-auto: none
+    hibernate.ddl-auto: create
     properties:
       hibernate.dialect: org.hibernate.dialect.MariaDBDialect
       hibernate.format_sql: true
