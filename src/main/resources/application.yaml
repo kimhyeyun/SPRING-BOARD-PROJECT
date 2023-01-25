@@ -12,6 +12,9 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 
 spring:
+  config:
+    activate:
+      on-profile: local
   datasource:
     url: jdbc:mysql://localhost:3306/board
     username: yun
@@ -36,9 +39,6 @@ spring:
       detection-strategy: annotated
   thymeleaf3:
     decoupled-logic: true
-  config:
-    activate:
-      on-profile: local
 ---
 spring:
   config:
@@ -58,7 +58,7 @@ spring:
       hibernate.dialect: org.hibernate.dialect.MariaDBDialect
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
-    sql.init.mode: never
+    sql.init.mode: always
     data.rest:
       base-path: /api
       detection-strategy: annotated
