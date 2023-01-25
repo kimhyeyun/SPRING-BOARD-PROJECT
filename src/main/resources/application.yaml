@@ -42,7 +42,7 @@ spring:
     activate:
       on-profile: cloudtype
   datasource:
-    url: jdbc:mariadb://{DBHOST}:{DB_PORT}/board?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mariadb://{DB_HOST}:{DB_PORT}/board?characterEncoding=UTF-8&serverTimezone=UTC
     username: {DB_USERNAME}
     password: {DB_PASSWORD}
   jpa:
