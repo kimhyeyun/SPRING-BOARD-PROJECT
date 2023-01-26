@@ -12,6 +12,14 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 
 spring:
+  profiles:
+    active: cloudtype
+
+---
+
+spring:
+  profiles:
+    active: local
   datasource:
     url: jdbc:mysql://localhost:3306/board
     username: yun
@@ -38,7 +46,6 @@ spring:
     decoupled-logic: true
 
 ---
-
 spring:
   config.activate.on-profile: cloudtype
   datasource:
@@ -52,6 +59,9 @@ spring:
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: off
   sql.init.mode: always
   data.rest:
     base-path: /api
