@@ -95,6 +95,7 @@ class ArticleServiceTest {
         then(articleRepository).shouldHaveNoInteractions();
     }
 
+    @DisplayName("없는 해시태그를 검색하면, 빈 페이지를 반환한다.")
     @Test
     void givenNoneExistentHashtag_whenSearchingArticlesViaHashtag_thenReturnsEmptyPage() {
         // Given
@@ -291,6 +292,7 @@ class ArticleServiceTest {
         then(hashtagService).shouldHaveNoInteractions();
     }
 
+    @DisplayName("게시글 작성자가 아닌 사람이 수정 정보를 입력하면, 아무 것도 하지 않는다.")
     @Test
     void givenModifiedArticleInfoWithDifferentUser_whenUpdatingArticle_thenDoesNothing() {
         // Given
