@@ -1,7 +1,6 @@
 package com.example.springboardproject.dto.request;
 
 import com.example.springboardproject.dto.ArticleCommentDto;
-import com.example.springboardproject.dto.ArticleDto;
 import com.example.springboardproject.dto.UserAccountDto;
 
 public record ArticleCommentRequest(
