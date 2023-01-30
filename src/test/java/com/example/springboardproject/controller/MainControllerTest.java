@@ -1,6 +1,5 @@
 package com.example.springboardproject.controller;
 
-import com.example.springboardproject.config.SecurityConfig;
 import com.example.springboardproject.config.TestSecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @Import(TestSecurityConfig.class)
 @WebMvcTest(MainController.class)
@@ -18,7 +18,7 @@ class MainControllerTest {
 
     private final MockMvc mvc;
 
-    public MainControllerTest(@Autowired MockMvc mvc) {
+    MainControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
