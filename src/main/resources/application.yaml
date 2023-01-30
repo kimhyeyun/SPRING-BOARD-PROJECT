@@ -10,6 +10,9 @@ logging:
     com.example.springboardproject: debug
     org.springframework.web.servlet: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
+spring:
+  profiles:
+    active: local
 
 ---
 
@@ -38,6 +41,9 @@ spring:
       detection-strategy: annotated
   thymeleaf3:
     decoupled-logic: true
+  config:
+    activate:
+      on-profile: local
 
 ---
 
@@ -66,6 +72,7 @@ spring:
       detection-strategy: annotated
   thymeleaf3:
     decoupled-logic: true
-  profiles:
-    active: aws
+  config:
+    activate:
+      on-profile: aws
 
