@@ -35,7 +35,7 @@ Spring Boot
 * Amazon AWS
 
 ## 데모 페이지
-[데모 페이지](http://ec2-15-164-160-129.ap-northeast-2.compute.amazonaws.com:8080)
+[데모 페이지](http://ec2-3-39-59-18.ap-northeast-2.compute.amazonaws.com:8080)
 
 
 
