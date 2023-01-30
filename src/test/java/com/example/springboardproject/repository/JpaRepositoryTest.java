@@ -21,7 +21,6 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles("testdb")
 @DisplayName("JPA 연결 테스트")
 @Import(JpaRepositoryTest.TestJpaConfig.class )
 @DataJpaTest

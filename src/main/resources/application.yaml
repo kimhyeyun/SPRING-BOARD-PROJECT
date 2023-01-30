@@ -48,7 +48,7 @@ spring:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:5432/board
+    url: jdbc:mysql://localhost:3306/board
     username: yun
     password: thisisTESTpw!@#$
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -105,4 +105,3 @@ spring:
   config:
     activate:
       on-profile: aws
-
