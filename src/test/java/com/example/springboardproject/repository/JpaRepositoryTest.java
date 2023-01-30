@@ -2,7 +2,6 @@ package com.example.springboardproject.repository;
 
 import com.example.springboardproject.domain.Article;
 import com.example.springboardproject.domain.UserAccount;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +22,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("JPA 연결 테스트")
 @Import(JpaRepositoryTest.TestJpaConfig.class )
 @DataJpaTest
-@Disabled("배포 상 문제로 disabled 처리")
 class JpaRepositoryTest {
 
     private final ArticleRepository articleRepository;
     private final ArticleCommentRepository articleCommentRepository;
     private final UserAccountRepository userAccountRepository;
 
-    public JpaRepositoryTest(
+    JpaRepositoryTest(
             @Autowired ArticleRepository articleRepository,
             @Autowired ArticleCommentRepository articleCommentRepository,
             @Autowired UserAccountRepository userAccountRepository) {
