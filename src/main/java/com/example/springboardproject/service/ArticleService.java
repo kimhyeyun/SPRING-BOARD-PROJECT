@@ -6,7 +6,6 @@ import com.example.springboardproject.domain.UserAccount;
 import com.example.springboardproject.domain.constant.SearchType;
 import com.example.springboardproject.dto.ArticleDto;
 import com.example.springboardproject.dto.ArticleWithCommentsDto;
-import com.example.springboardproject.dto.HashtagDto;
 import com.example.springboardproject.repository.ArticleRepository;
 import com.example.springboardproject.repository.HashtagRepository;
 import com.example.springboardproject.repository.UserAccountRepository;
@@ -77,7 +76,7 @@ public class ArticleService {
         Article article = dto.toEntity(userAccount);
         article.addHashtags(hashtags);
 
-        articleRepository.save(dto.toEntity(userAccount));
+        articleRepository.save(article);
     }
 
     public void updateArticle(Long articleId, ArticleDto dto) {
