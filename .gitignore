@@ -12,6 +12,9 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+# 배포환경 설정 파일 ignore 처리
+src/main/resources/application-prod.yaml
+
 # AWS User-specific
 .idea/**/aws.xml
 
