@@ -18,16 +18,18 @@ public class TestSecurityConfig {
 
     @BeforeTestMethod
     public void securitySetUp() {
-        given(userAccountService.searchUser(anyString())).willReturn(Optional.of(createUserAccountDto()));
-        given(userAccountService.saveUser(anyString(), anyString(), anyString(), anyString(), anyString())).willReturn(createUserAccountDto());
-
+        given(userAccountService.searchUser(anyString()))
+                .willReturn(Optional.of(createUserAccountDto()));
+        given(userAccountService.saveUser(anyString(), anyString(), anyString(), anyString(), anyString()))
+                .willReturn(createUserAccountDto());
     }
+
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
                 "yunTest",
                 "pw",
-                "yun-test@mail.com",
+                "yun-test@email.com",
                 "yun-test",
                 "test memo"
         );
