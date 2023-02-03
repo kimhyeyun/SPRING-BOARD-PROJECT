@@ -10,36 +10,37 @@ logging:
     com.example.springboardproject: debug
     org.springframework.web.servlet: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
+
 spring:
   profiles:
     active: ${profile}
 
 ---
-
-spring:
-  datasource:
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD} 
-  jpa:
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: create
-    open-in-view: false
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 100
-  sql:
-    init:
-      mode: always
-  data:
-    rest:
-      base-path: /api
-      detection-strategy: annotated
-  thymeleaf3:
-    decoupled-logic: true
-  config:
-    activate:
-      on-profile: mysql
+#
+#spring:
+#  datasource:
+#    url: ${MYSQL_URL}
+#    username: ${MYSQL_USERNAME}
+#    password: ${MYSQL_PASSWORD}
+#  jpa:
+#    defer-datasource-initialization: true
+#    hibernate:
+#      ddl-auto: create
+#    open-in-view: false
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        default_batch_fetch_size: 100
+#  sql:
+#    init:
+#      mode: always
+#  data:
+#    rest:
+#      base-path: /api
+#      detection-strategy: annotated
+#  thymeleaf3:
+#    decoupled-logic: true
+#  config:
+#    activate:
+#      on-profile: mysql
