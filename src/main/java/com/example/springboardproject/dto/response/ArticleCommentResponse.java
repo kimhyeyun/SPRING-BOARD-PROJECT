@@ -1,6 +1,5 @@
 package com.example.springboardproject.dto.response;
 
-import com.example.springboardproject.domain.ArticleComment;
 import com.example.springboardproject.dto.ArticleCommentDto;
 
 import java.time.LocalDateTime;
@@ -9,8 +8,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * A DTO for the {@link ArticleComment} entity
+ * 댓글 응답 표준 포맷
  */
+
 public record ArticleCommentResponse(
         Long id,
         String content,
