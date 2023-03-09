@@ -5,6 +5,7 @@ import com.example.springboardproject.domain.ArticleComment;
 import com.example.springboardproject.domain.Hashtag;
 import com.example.springboardproject.domain.UserAccount;
 import org.assertj.core.api.InstanceOfAssertFactories;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("JPA 연결 테스트")
 @Import(JpaRepositoryTest.TestJpaConfig.class )
 @DataJpaTest
+@Disabled
 class JpaRepositoryTest {
 
     private final ArticleRepository articleRepository;

@@ -3,6 +3,7 @@ package com.example.springboardproject.config;
 import com.example.springboardproject.dto.security.BoardPrincipal;
 import com.example.springboardproject.dto.security.KakaoOAuth2Response;
 import com.example.springboardproject.service.UserAccountService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +13,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -91,6 +96,22 @@ public class SecurityConfig {
                     );
         };
 
+    }
+
+    @Bean
+    public ClientRegistrationRepository getRegistration(
+            @Value("${spring.security.oauth2.client.provider.kakao.token-uri}") String tokenUri,
+            @Value("${spring.security.oauth2.client.registration.kakao.client-id}") String clientId,
+            @Value("${spring.security.oauth2.client.registration.kakao.client-secret}") String clientSecret
+    ) {
+        ClientRegistration registration = ClientRegistration
+                .withRegistrationId("kakao")
+                .tokenUri(tokenUri)
+                .clientId(clientId)
+                .clientSecret(clientSecret)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .build();
+        return new InMemoryClientRegistrationRepository(registration);
     }
 
     @Bean

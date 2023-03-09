@@ -11,26 +11,21 @@ import java.util.Objects;
 import java.util.Set;
 
 @Getter
+@Setter
 @ToString(callSuper = true)
-@Table(indexes = {
-        @Index(columnList = "title"),
-        @Index(columnList = "createdAt"),
-        @Index(columnList = "createdBy")
-})
-@Entity
+@Entity(name = "article")
 public class Article extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
     @ManyToOne(optional = false)
     @JoinColumn(name = "userId")
     private UserAccount userAccount;    // 유저 정보 (ID)
 
-    @Setter @Column(nullable = false) private String title; // 제목
-    @Setter @Column(nullable = false, length = 10000) private String content; // 본문
+    private String title; // 제목
+    private String content; // 본문
 
     @ToString.Exclude
     @JoinTable(
