@@ -10,26 +10,20 @@ import java.util.Objects;
 import java.util.Set;
 
 @Getter
+@Setter
 @ToString(callSuper = true)
-@Table(indexes = {
-        @Index(columnList = "content"),
-        @Index(columnList = "createdAt"),
-        @Index(columnList = "createdBy")
-})
-@Entity
+@Entity(name = "article_comment")
 public class ArticleComment extends AuditingFields{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 
-    @Setter
     @ManyToOne(optional = false)
     private Article article; // 게시글 (ID)
-    @Setter
-    @JoinColumn(name = "userId")
+
     @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
     private UserAccount userAccount; // 유저 정보 (ID)
 
-    @Setter
-    @Column(updatable = false)
+
     private Long parentCommentId; //  부모 댓글 ID
 
     @ToString.Exclude
@@ -37,7 +31,7 @@ public class ArticleComment extends AuditingFields{
     @OneToMany(mappedBy = "parentCommentId", cascade = CascadeType.ALL)
     private Set<ArticleComment> childComments = new LinkedHashSet<>();
 
-    @Setter @Column(nullable = false, length = 500) private String content; // 본문
+    private String content; // 본문
 
     
     protected ArticleComment() {

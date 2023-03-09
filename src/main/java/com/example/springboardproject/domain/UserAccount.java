@@ -8,23 +8,18 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Getter
+@Setter
 @ToString(callSuper = true)
-@Table(indexes = {
-        @Index(columnList = "email", unique = true),
-        @Index(columnList = "createdAt"),
-        @Index(columnList = "createdBy")
-})
-@Entity
+@Entity(name = "user_account")
 public class UserAccount extends AuditingFields{
 
-    @Id
-    @Column(length = 50) private String userId;
+    @Id private String userId;
 
-    @Setter @Column(nullable = false) private String userPassword;
+    private String userPassword;
 
-    @Setter @Column(length = 100) private String email;
-    @Setter @Column(length = 100) private String nickname;
-    @Setter private String memo;
+    private String email;
+    private String nickname;
+    private String memo;
 
     protected UserAccount() {}
 

@@ -10,13 +10,9 @@ import java.util.Objects;
 import java.util.Set;
 
 @Getter
+@Setter
 @ToString(callSuper = true)
-@Table(indexes = {
-        @Index(columnList = "hashtagName", unique = true),
-        @Index(columnList = "createdAt"),
-        @Index(columnList = "createdBy")
-})
-@Entity
+@Entity(name = "hashtag")
 public class Hashtag extends AuditingFields{
 
     @Id
@@ -27,7 +23,7 @@ public class Hashtag extends AuditingFields{
     @ManyToMany(mappedBy = "hashtags")
     private Set<Article> articles = new LinkedHashSet<>();
 
-    @Setter @Column(nullable = false) private String hashtagName; // 해시태그 이름
+    private String hashtagName; // 해시태그 이름
 
     protected Hashtag(){
 
