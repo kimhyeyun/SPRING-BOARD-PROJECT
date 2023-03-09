@@ -23,6 +23,7 @@ spring:
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/kakao"
             client-authentication-method: POST
+            client-name: kakao
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize
