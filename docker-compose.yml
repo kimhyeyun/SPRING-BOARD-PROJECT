@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  board-database:
+    container_name: board-database
+    build:
+      dockerfile: Dockerfile
+      context: ./database
+    image: yuni97/board-database
+    environment:
+      - MARIADB_DATABASE=board
+      - MARIADB_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - ./database/config:/etc/mysql/conf.d
+      - ./database/init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+  board-app:
+    container_name: board-app
+    build: .
+    depends_on:
+      - board-database
+    image: yuni97/board-app
+    environment:
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - KAKAO_OAUTH_CLIENT_ID=${KAKAO_OAUTH_CLIENT_ID}
+      - KAKAO_OAUTH_CLIENT_SECRET=${KAKAO_OAUTH_CLIENT_SECRET}
+    ports:
+      - "80:8080"
+    restart: always

@@ -8,7 +8,7 @@ services:
     image: yuni97/board-database
     environment:
       - MARIADB_DATABASE=board
-      - MARIADB_ROOT_PASSWORD=1234
+      - MARIADB_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
     volumes:
       - ./database/config:/etc/mysql/conf.d
       - ./database/init:/docker-entrypoint-initdb.d/
