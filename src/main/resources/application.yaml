@@ -1,34 +1,17 @@
-debug: false
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-logging:
-  level:
-    com.example.springboardproject: debug
-    org.springframework.web.servlet: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
-
 spring:
-  datasource:
-    url: ${POSTGRES_DB_URL}
-    username: ${POSTGRES_DB_USERNAME}
-    password: ${POSTGRES_DB_PASSWORD}
-  jpa:
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: create
-    open-in-view: false
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 100
-  sql:
-    init:
-      mode: always
+  profiles:
+    active: local
+    group:
+      local:
+        - common
+      prod:
+        - common
+
+---
+spring:
+  config:
+    activate:
+      on-profile: common
   data:
     rest:
       base-path: /api
@@ -51,36 +34,38 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
+
 ---
 
 spring:
   config:
     activate:
-      on-profile: test
-  h2:
-    console:
-      enabled: true
-  jpa:
-    database: h2
-    defer-datasource-initialization: true
-    open-in-view: false
+      on-profile: local
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;MODE=MySQL;
-    username: sa
-    password:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/board
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
 
 ---
 
 spring:
+  config:
+    activate:
+      on-profile: prod
   datasource:
-    url: ${MYSQL_URL}
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD} 
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://board-database:3306/board
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     open-in-view: false
     show-sql: true
     properties:
@@ -89,13 +74,4 @@ spring:
         default_batch_fetch_size: 100
   sql:
     init:
-      mode: always
-  data:
-    rest:
-      base-path: /api
-      detection-strategy: annotated
-  thymeleaf3:
-    decoupled-logic: true
-  config:
-    activate:
-      on-profile: mysql
+      mode: never
