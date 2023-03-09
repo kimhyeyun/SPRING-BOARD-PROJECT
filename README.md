@@ -33,6 +33,7 @@ Spring Boot
 * QueryDSL 5.0.0
 * Bootstrap 5.3.0
 * Amazon AWS
+* Docker
 
 ## 데모 페이지
 [데모 페이지](http://ec2-3-39-59-18.ap-northeast-2.compute.amazonaws.com:8080)
