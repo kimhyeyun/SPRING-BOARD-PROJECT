@@ -18,6 +18,10 @@ repositories {
     mavenCentral()
 }
 
+bootJar{
+    archiveFileName='app.jar'
+}
+
 dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.12'
@@ -31,16 +35,22 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
     runtimeOnly('com.h2database:h2')
     runtimeOnly('mysql:mysql-connector-java')
     runtimeOnly('org.postgresql:postgresql')
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     compileOnly 'org.projectlombok:lombok'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation('org.springframework.security:spring-security-test')
     annotationProcessor 'com.github.therapi:therapi-runtime-javadoc-scribe:0.15.0'
+
 
     // queryDSL 설정
     implementation "com.querydsl:querydsl-jpa"
