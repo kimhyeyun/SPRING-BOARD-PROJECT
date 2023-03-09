@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  board-database:
+    container_name: board-database
+    build:
+      dockerfile: Dockerfile
+      context: ./database
+    image: yuni97/board-database
+    environment:
+      - MARIADB_DATABASE=board
+      - MARIADB_ROOT_PASSWORD=1234
+    volumes:
+      - ./database/config:/etc/mysql/conf.d
+      - ./database/init:/docker-entrypoint-initdb.d/
+    ports:
+      - "3306:3306"
